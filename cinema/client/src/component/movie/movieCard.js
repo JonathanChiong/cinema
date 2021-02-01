@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import { Stars } from "./stars";
 
 export const MovieCard = (props) => {
   const [showModal, setShowModal] = useState(false);
@@ -6,7 +7,6 @@ export const MovieCard = (props) => {
   return (
     <Fragment>
       <div
-        key={props.key}
         className="movie"
         style={{ transform: `translateX(${props.x}%)` }}
         onClick={() => setShowModal(!showModal)}
@@ -23,7 +23,7 @@ export const MovieCard = (props) => {
                 <p>Rating </p>
               </div>
               <div className="descVal">
-                <p>{props.movie.rating} </p>
+                <Stars num={props.movie.rating} starKey={props.movie._id} />
               </div>
             </div>
             <div className="cardRow">
@@ -40,15 +40,13 @@ export const MovieCard = (props) => {
                 <p>Casts: </p>
               </div>
               <div className="descVal">
-                <p>
-                  {props.movie.casts.map((item, index) => {
-                    return (
-                      <p key={index + "cast"}>
-                        {item.f_name} {item.l_name},
-                      </p>
-                    );
-                  })}
-                </p>
+                {props.movie.casts.map((item, index) => {
+                  return (
+                    <p key={index + "cast"}>
+                      {item.f_name} {item.l_name},
+                    </p>
+                  );
+                })}
               </div>
             </div>
 
@@ -57,11 +55,9 @@ export const MovieCard = (props) => {
                 <p>Genre: </p>
               </div>
               <div className="descVal">
-                <p>
-                  {props.movie.genres.map((item, index) => {
-                    return <p key={index + "genre"}>{item.genre}</p>;
-                  })}
-                </p>
+                {props.movie.genres.map((item, index) => {
+                  return <p key={index + "genre"}>{item.genre}</p>;
+                })}
               </div>
             </div>
             <div className="cardRow">
