@@ -22,7 +22,7 @@ export const Movie = () => {
     const result = movies
       .sort((a, b) => a.rating - b.rating)
       .slice(movies.length - 10);
-    setTop10(result);
+    setTop10(result.reverse());
   };
 
   const findDrama = () => {
