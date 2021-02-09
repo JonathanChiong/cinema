@@ -20,9 +20,9 @@ export const Movie = () => {
 
   const findTop10 = () => {
     const result = movies
-      .sort((a, b) => a.rating - b.rating)
+      .sort((a, b) => b.rating - a.rating)
       .slice(movies.length - 10);
-    setTop10(result.reverse());
+    setTop10(result);
   };
 
   const findDrama = () => {
